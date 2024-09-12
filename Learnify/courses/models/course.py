@@ -1,19 +1,9 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from .subject import Subject
+
 User = get_user_model()
 
-
-
-class Subject(models.Model):
-    title  = models.CharField(max_length=150)
-    slug = models.SlugField(max_length=200, unique=True)
-    
-    class Meta:
-        ordering = ['title']
-        
-    def __str__(self) -> str:
-        return self.title
-    
 class Course(models.Model):
     owner = models.ForeignKey(
         User,
@@ -38,17 +28,3 @@ class Course(models.Model):
 
     def __str__(self) -> str:
         return self.title
-
-    
-class Module(models.Model):
-    course = models.ForeignKey(
-        Course,
-        related_name='modules',
-        on_delete=models.CASCADE
-    )
-    title = models.CharField(max_length=200)
-    description = models.TextField(blank=True)
-
-    def __str__(self):
-        return self.title
-
