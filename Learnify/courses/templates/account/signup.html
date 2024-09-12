@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <form method="post" action="{{ account_signup }}">
+        {% csrf_token %}
+        <p>
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            <input type="email"
+                   name="{{ form.email.html_name }}"
+                   placeholder="Email address"
+                   autocomplete="email"
+                   maxlength="320"
+                   id="{{ form.email.id_for_label }}" />
+        </p>
+        <p>
+            <label for="id_password1">Password:</label>
+            <input type="password"
+                   name="{{ form.password1.html_name }}"
+                   placeholder="Password"
+                   autocomplete="new-password"
+                   required=""
+                   aria-describedby="id_password1_helptext"
+                   id="{{ form.password.id_for_label }}" />
+        </p>
+        
+        <p>
+            <label for="{{ form.password2.id_for_label }}">Password (again):</label>
+            <input type="password"
+                   name="{{ form.password2.html_name }}"
+                   placeholder="Password (again)"
+                   autocomplete="new-password"
+                   id="{{ form.password2.id_for_label }}" />
+        </p>
+        <button type="submit">Sign Up</button>
+    </form>
+{% endblock content %}
