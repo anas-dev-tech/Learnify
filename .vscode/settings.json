@@ -5,10 +5,10 @@
             "server": "localhost",
             "port": 5432,
             "driver": "PostgreSQL",
-            "name": "Adventure works",
-            "database": "Adventureworks",
-            "username": "postgres",
-            "password": ""
+            "name": "Learnify",
+            "database": "learnify",
+            "username": "django",
+            "password": "Anas775995183"
         }
     ]
 }
