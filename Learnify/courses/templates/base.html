@@ -1,16 +1,19 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="keywords" content="Courses, e-learning, tutorials">
+
+    <meta name="description" content="Your concise and compelling description here">
     <title>
-      {% block title %} Learnify {% endblock title%}
+      {% block title %}Learnify{% endblock title %}
     </title>
     <link href="{% static "css/base.css" %}" rel="stylesheet">
   </head>
   <body>
     <div id="header">
-      <a href="/" class="logo">Learnify</a>
+      <a href="{% url 'manage_course_list' %}" class="logo">Learnify</a>
       <ul class="menu">
         {% if request.user.is_authenticated %}
           <li>
@@ -29,12 +32,10 @@
     <div id="content">
       {% block content %}{% endblock content %}
     </div>
-    <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-        // DOM loaded
-        {% block domready %}
-        {% endblock %}
-      })
-    </script>
+    {% block include_js %}
+    {% endblock include_js %}
+    
+    {% block domready %}
+    {% endblock domready %}
   </body>
 </html>
