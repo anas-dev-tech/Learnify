@@ -1,6 +1,6 @@
 from django.forms.models import inlineformset_factory
 from .models import Module, Course
-
+from django import forms
 
 ModuleFormSet = inlineformset_factory(
     Course,
@@ -9,3 +9,4 @@ ModuleFormSet = inlineformset_factory(
     extra=2,
     can_delete=True
 )
+
