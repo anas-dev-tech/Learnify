@@ -20,16 +20,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    # My apps``
+    # My apps
     'courses',
     'students',
+    'chat',
     
     # third party apps
     'allauth',
@@ -38,6 +32,14 @@ INSTALLED_APPS = [
     'embed_video',
     'debug_toolbar',
     'rest_framework',
+    'daphne',
+    
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 
 ]
 
@@ -100,6 +102,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Learnify.wsgi.application'
+ASGI_APPLICATION = 'Learnify.asgi.application'
 
 
 # Database
@@ -179,4 +182,14 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [       
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
+}
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
 }
